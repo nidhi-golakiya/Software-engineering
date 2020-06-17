@@ -1,0 +1,327 @@
+{%block content%} {% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Remove Bekari | Home JS</title>
+    <link rel="stylesheet" href="{% static 'style/hjs_style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body background="{% static 'Images/logo.PNG' %}'">
+    <header class="hh">
+        <nav>
+            <ul>
+                <li>
+                    <a href="{% url 'home' %}"><img src="{% static 'Images/symbol.PNG' %}" alt="Opportunities is waiting for you..!!" height="40px" width="40px"></a>
+                </li>
+
+
+                <li><a href="{% url 'AboutUs' %}">ABOUT US</li></a>
+                    <li><a href="{% url 'ContactUs' %}">CONTACT US</li></a>
+                        <li><a href="{% url 'home' %}">LOG OUT</li></a>
+                            <div class="profile">
+                                <li>
+                                    <a onclick="myFunction()"> <img src="{{user_det}}" alt="Profile photo" height="40px" width="40px"></a>
+
+                                </li>
+                            </div>
+            </ul>
+            <div id="myDIV">
+                <img src={{user_det}} alt="Profile photo">
+                <br>
+                <a>{{u_name}}</a>
+                <br><br>
+                <form action="EditJS" method="POST" enctype="multipart/form-data">
+                    {%csrf_token%}
+                    <label for="file-upload" class="custom-file-upload">
+                    <i class="fa fa-edit"></i> Edit Profile Photo
+                    </label>
+                    <br><br>
+
+                    <input type="hidden" value="{{user_det}}" name="user_det">
+                    <input type="hidden" value="{{u_name}}" name="u_name">
+                    <input id="file-upload" name="js_profile_pic" type="file" accept="image/*" style="display:none;"><br><br>
+                    <input type="hidden" value="go" name="pro">
+                    <button class="go" type="submit" id="myBtn">Go</button>
+                    
+               </form>
+               <form action="EditJS" method="POST" enctype="multipart/form-data">
+                {%csrf_token%}
+                
+                <input type="hidden" value="{{user_det}}" name="user_det">
+                <input type="hidden" value="{{u_name}}" name="u_name">
+                <input id="file-upload" name="js_profile_pic" type="file" accept="image/*" style="display:none;"><br><br>
+                <input type="hidden" value="remove" name="pro">
+                <button class="remove" type="submit" id="myBtn">Remove</button>
+           </form>
+            </div>
+
+        </nav>
+    </header>
+
+    <div class="sidenav">
+
+
+        <form action="HJS_" method="POST">
+            {%csrf_token%}
+            <input type="hidden" value="{{u_name}}" name="u_name">
+            <input type="hidden" value="{{user_det}}" name="user_det">
+            <button class="ss" type="submit">Home</button>
+        </form>
+        <hr>
+        <a href="#about">Find Job</a>
+        <hr>
+        <form action="Jstatus" method="POST">
+            {%csrf_token%}
+            <input type="hidden" value="{{u_name}}" name="u_name">
+            <input type="hidden" value="{{user_det}}" name="user_det">
+            <button class="ss" type="submit">Check Status</button>
+        </form>
+        <hr>
+        <form action="updateJS" method="POST">
+            {%csrf_token%}
+            <input type="hidden" value="{{u_name}}" name="u_name">
+            <input type="hidden" value="{{user_det}}" name="user_det">
+            <button class="ss1" type="submit">Update Profile</button>
+        </form>
+        <hr>
+
+    </div>
+    <div class="job-det" style="padding-top: 5%;">
+        <a style="color: rgb(255, 255, 255);font-family: cursive;">Find Jobs       <i class="fa fa-search"></i></a>
+        <hr>
+    </div>
+
+    <!--for loop start-->
+    {%for jd,p,i in path%}
+    <div class="job-det">
+        <div class="job">
+            <br>
+            <div class="left_c">
+                <a style="font-weight: bold;">{{jd.jd_category}}</a> <br>
+                <!--Category name-->
+
+                <a>Position :  {{jd.jd_position}}</a>
+                <a>{{jd.jd_company_name}}</a>
+                <!--Company name--><br>
+                <a>Location(s):</a><a>{{jd.jd_location}}</a>
+                <!--Location--><br>
+            </div>
+
+            <div class="right_c">
+                <a>
+                    <img src={{p}} alt="Profile photo" height="80px" width="80px">
+                </a>
+            </div>
+            <br><br><br>
+            <br>
+            <table>
+                <tr class="detail-cont">
+                    <td>Start Date</td>
+                    <td>Duration</td>
+                    <td>Stipend</td>
+                    <td>Posted On</td>
+                    <td>Apply By</td>
+
+                </tr>
+
+                <tr>
+                    <td>{{jd.jd_start_date}}</td>
+                    <td>{{jd.jd_duration}}</td>
+                    <td>{{jd.jd_salary}}</td>
+                    <td>{{jd.jd_posted_on}}</td>
+                    <td>{{jd.jd_apply_by}}</td>
+
+                </tr>
+            </table>
+            <br>
+            <form action="CJD" method="POST">
+                {%csrf_token%}
+                <!--a class="ss" href="{% url 'viewapp' %}"-->
+
+                <input type="hidden" value={{p}} name="path">
+                <input type="hidden" name="category" value="{{jd.jd_category}}">
+                <input type="hidden" value="{{jd.jd_position}}" name="position">
+                <input type="hidden" value="{{jd.jd_company_name}}" name="company_name">
+                <input type="hidden" value="{{jd.jd_location}}" name="location">
+                <input type="hidden" value="{{jd.jd_start_date}}" name="start_date">
+                <input type="hidden" value="{{jd.jd_duration}}" name="duration">
+                <input type="hidden" value="{{jd.jd_salary}}" name="salary">
+                <input type="hidden" value="{{jd.jd_posted_on}}" name="posted_on">
+                <input type="hidden" value="{{jd.jd_apply_by}}" name="apply_by">
+                <input type="hidden" name="description" id="description" value="{{jd.jd_description}}">
+                <input type="hidden" value="{{jd.jd_perks}}" name="perks">
+                <input type="hidden" value="{{jd.jd_vacancy}}" name="vacancy">
+                <input type="hidden" value="{{jd.jd_experience}}" name="experience">
+                <input type="hidden" value="{{jd.jd_skills_required}}" name="requirment">
+                <input type="hidden" value="{{jd.jd_job_id}}" name="job_id">
+                <input type="hidden" value="{{u_name}}" name="u_name">
+                <input type="hidden" value="{{user_det}}" name="user_det">
+                <button class="ss" type="submit">View Details >></button>
+            </form>
+            <br>
+        </div>
+    </div>
+    <!--for loop end-->
+    {%endfor%}
+
+
+    <div class="filter">
+        <form method="POST" action="FilterJob">
+            {%csrf_token%}
+            <a style="font-size: larger;">Filter Jobs <i class="fa fa-filter"></i></a>
+            <hr>
+            <a style="font-size: medium;">Position</a>
+            <select class="custom-select" style="width:230px;" id="select" type=select name="filter_pos">
+                        <option >Select Position</option>
+                        <option >Accountant</option>
+                        <option >Back Office Assistant</option>
+                        <option >Content Writer</option>
+                        <option >Graphic Designer</option>
+                        <option >Manager</option>
+                        <option >Marketing Department</option>
+                        <option >Production Department</option>
+                        <option >Project Manager</option>
+                        <option >Receptionist</option>
+                        <option >Technical Department</option>
+                        <option >Other</option>
+                    </select>
+
+
+            <a style="font-size: medium;">Location</a>
+            <input type=text name="filter_loc" placeholder="Location" id="location" size="30" />
+            <a style="font-size: medium;">Category*</a>
+            <select class="custom-select" style="width:230px;" id="select" type=select name="filter_cat" required>
+                <option >Select Your Category </option>
+                <option >Android App Developer</option>
+                <option >Articial Intelligence</option>
+                <option >Backend Developer</option>
+                <option >Data Science</option>
+                <option >Finance</option>
+                <option >Full Stack Developer</option>
+                <option >Graphic Designer</option>
+                <option >Health Science</option>
+                <option >Information Technology</option>
+                <option >Machine Learning</option>
+                <option >Manufacturing</option>
+                <option >Marketing</option>
+                <option >Software Enginerr</option>
+                <option >Transportation,Distribution and Logistic</option>
+                <option >Web Developer</option>
+                <option >Other</option>
+            </select>
+            <input type="hidden" value="{{u_name}}" name=u_name>
+            <input type="hidden" value="{{user_det}}" name="user_det">
+            <button class="mybtn" type="Filter" id="myBtn" onclick="">Filter</button>
+        </form>
+    </div>
+
+
+    <footer class="ff">
+        <ul style="float: left;">
+            <li><a style="text-transform: uppercase;font-weight: 100;"> 11 , Safal square , VIP road , Surat , Gujarat-395007 &nbsp | &nbsp Contact Info &nbsp : &nbsp +91 9898989898 &nbsp | &nbsp +91 77077878787 &nbsp | &nbsp </li></a>
+                <li>
+                    <a href="http://www.facebook.com/"><i class="fa fa-facebook"></i></li>
+                </a>
+                    <li>
+                        <a href="http://www.twitter.com/"><i class="fa fa-twitter"></i></li>
+                    </a>
+                        <li>
+                            <a href="http://www.instagram.com/"><i class="fa fa-instagram"></i></li>
+						</a>
+                            <li>
+                                <a href="http://www.linkedin.com/"><i class="fa fa-linkedin"></i></li>
+                        </a>
+        </ul>
+    </footer>
+    <script>
+        function myFunction() {
+            var x = document.getElementById("myDIV");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+    </script>
+
+    <script>
+        var x, i, j, selElmnt, a, b, c;
+        /*look for any elements with the class "custom-select":*/
+        x = document.getElementsByClassName("custom-select");
+        for (i = 0; i < x.length; i++) {
+            selElmnt = x[i].getElementsByTagName("select")[0];
+            /*for each element, create a new DIV that will act as the selected item:*/
+            a = document.createElement("DIV");
+            a.setAttribute("class", "select-selected");
+            a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+            x[i].appendChild(a);
+            /*for each element, create a new DIV that will contain the option list:*/
+            b = document.createElement("DIV");
+            b.setAttribute("class", "select-items select-hide");
+            for (j = 1; j < selElmnt.length; j++) {
+                /*for each option in the original select element,
+                create a new DIV that will act as an option item:*/
+                c = document.createElement("DIV");
+                c.innerHTML = selElmnt.options[j].innerHTML;
+                c.addEventListener("click", function(e) {
+                    /*when an item is clicked, update the original select box,
+                    and the selected item:*/
+                    var y, i, k, s, h;
+                    s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+                    h = this.parentNode.previousSibling;
+                    for (i = 0; i < s.length; i++) {
+                        if (s.options[i].innerHTML == this.innerHTML) {
+                            s.selectedIndex = i;
+                            h.innerHTML = this.innerHTML;
+                            y = this.parentNode.getElementsByClassName("same-as-selected");
+                            for (k = 0; k < y.length; k++) {
+                                y[k].removeAttribute("class");
+                            }
+                            this.setAttribute("class", "same-as-selected");
+                            break;
+                        }
+                    }
+                    h.click();
+                });
+                b.appendChild(c);
+            }
+            x[i].appendChild(b);
+            a.addEventListener("click", function(e) {
+                /*when the select box is clicked, close any other select boxes,
+                and open/close the current select box:*/
+                e.stopPropagation();
+                closeAllSelect(this);
+                this.nextSibling.classList.toggle("select-hide");
+                this.classList.toggle("select-arrow-active");
+            });
+        }
+
+        function closeAllSelect(elmnt) {
+            /*a function that will close all select boxes in the document,
+            except the current select box:*/
+            var x, y, i, arrNo = [];
+            x = document.getElementsByClassName("select-items");
+            y = document.getElementsByClassName("select-selected");
+            for (i = 0; i < y.length; i++) {
+                if (elmnt == y[i]) {
+                    arrNo.push(i)
+                } else {
+                    y[i].classList.remove("select-arrow-active");
+                }
+            }
+            for (i = 0; i < x.length; i++) {
+                if (arrNo.indexOf(i)) {
+                    x[i].classList.add("select-hide");
+                }
+            }
+        }
+        /*if the user clicks anywhere outside the select box,
+        then close all select boxes:*/
+        document.addEventListener("click", closeAllSelect);
+    </script>
+</body>
+
+</html>
+{%endblock%}

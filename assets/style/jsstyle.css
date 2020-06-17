@@ -1,0 +1,304 @@
+body{
+    color: white;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 0px;
+    margin: 0px;
+    
+  background-color: #d8d8d8;
+  
+  z-index: 50;
+  
+}
+
+header img{
+    border-radius: 10px;
+    margin-top: 0px;
+    margin-top: 20px;
+    margin-bottom: -20px;
+}
+
+header {
+    position:   fixed;
+    background-color:#006a53;
+    color : white;
+    width: 100%;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    height: 60px;
+  text-align: left;
+  font-size: 30px;
+  z-index: 100;
+}
+
+
+
+section{
+    background-color: aqua;
+
+}
+
+footer {   
+    position: fixed;
+    background-color:#006a53;
+    color : black;
+    width: 100%;
+    height: 35px;
+    bottom: 0;
+    left: 0;
+    min-width: 1200px;
+    font-size: 25px;
+    z-index: 100;
+
+}
+ul{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    
+}
+
+li {
+    display: inline-block;
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-top:-20px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+
+ a:hover{
+    color: black;
+    background-color: none;
+}
+
+header img:hover{
+    background-color: #1f2020;
+}
+
+
+a {
+    text-decoration: none;
+    color:white;
+}
+
+.float_right { 
+    float: right;
+}
+
+.float_left { 
+    float: left;
+}
+
+
+.textcontent{
+    background: rgb(54, 44, 44);
+    color: white;
+    text-align: justify;
+    vertical-align: middle;
+    display: inline-block;
+    line-height: 1.5;
+    font-family:  Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 110%;
+    padding: 50px 50px 50px 50px;
+    border-radius: 50px;
+    margin-right: 20%;
+    margin-left: 20%;
+    
+}
+
+
+.sidenav {
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    background-color: #7a1448;
+    overflow-x: visible;
+    padding-top: 4%;
+  }
+  
+  .sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #ffffff;
+    display: block;
+  }
+  
+  .sidenav a:hover {
+    color: #070707;
+    background-color:rgb(207, 207, 207) ;
+  }
+  
+  .main {
+    margin-left: 160px; /* Same as the width of the sidenav */
+    font-size: 28px; /* Increased text to enable scrolling */
+    padding: 0px 10px;
+    z-index:2;
+  }
+  
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }
+
+  .img1{
+      padding-top: 5%;
+      padding-left: 35%;
+      size: 900px 600px;
+  }
+
+  .img1 h1{
+      color: #7a1448;
+      padding-left: 8%;
+  }
+  .container {  
+    padding-left: 25%; 
+  background-color: #d8d8d8;  
+  color: black;
+}  
+.container hr{
+width: 90%;
+padding-left: 0%;
+}
+  
+input[type=text], input[type=password],input[type=date],textarea {  
+  width: 60%;  
+  padding: 15px;  
+  margin: 5px 0 22px 0;  
+  display: inline-block;  
+  border: none;  
+  font-family: Georgia, 'Times New Roman', Times, serif;
+
+  font-size: 20px;
+  background: #f1f1f1;  
+}  
+input[type=text]:focus, input[type=password]:focus {  
+  background-color: rgb(255, 255, 255);  
+  outline: none;  
+  font-size: 20px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}  
+  
+hr {  
+  border: 1px solid #7a1448;  
+  margin-bottom: 45px;  
+  margin-right: 500px;
+  width: 100%;
+  
+}  
+
+label{
+    display: inline-block;
+    float: left;
+    clear: left;
+    width: 150px;
+    text-align: right;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 35px;
+}
+td{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 25px;
+
+}
+input text{
+  display: inline-block;
+  width: 80%;
+  margin-left: 0%;
+  size: 25px;
+}
+.rad{
+  margin-left: 60px;
+  
+}
+input .dat{
+width: 200px;
+font-size: 25px;
+color: #f1f1f1;
+}
+.custom-select {
+  padding: 0px;  
+  margin: 4px 0 20px 0;  
+  position: relative;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 20px;
+}
+
+.custom-select select {
+  display: none; /*hide original SELECT element:*/
+}
+
+.select-selected {
+  background-color: whitesmoke;
+}
+
+/*style the arrow inside the select element:*/
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #fff transparent transparent transparent;
+}
+
+/*point the arrow upwards when the select box is open (active):*/
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent #fff transparent;
+  top: 7px;
+}
+
+/*style the items (options), including the selected item:*/
+.select-items div,.select-selected {
+  color: grey;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
+  user-select: none;
+}
+
+/*style items (options):*/
+.select-items {
+  position: absolute;
+  background-color: whitesmoke;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+/*hide the items when the select box is closed:*/
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+  
+.btn{
+  margin-top: 1200px;
+  margin-bottom: 0px;
+  margin-left: 300px;
+  padding-bottom: 100px;
+}
+.btn .registerbtn {  
+  position: absolute;
+  
+  background-color: #7a1448;
+  color: white;
+  font-size: 16px;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+}  
+.registerbtn:hover {  
+  opacity: 1;  
+}  

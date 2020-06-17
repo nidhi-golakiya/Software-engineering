@@ -1,0 +1,73 @@
+{%block content%} {% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Remove Bekari | Contact us</title>
+    <link rel="stylesheet" href="{% static 'style/csstyle.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body background="{% static 'Images/logo.PNG' %}'">
+    <header class="hh">
+        <nav>
+            <ul>
+                <li>
+                    <a href="{% url 'home' %}"><img src="{% static 'Images/symbol.PNG' %}" alt="Opportunities is waiting for you..!!" height="40px" width="40px"></a>
+                </li>
+                <li><a href="{% url 'home' %}">HOME</a></li>
+                <li><a href="{% url 'AboutUs' %}">ABOUT US</li></a>
+
+            </ul>
+        </nav>
+    </header>
+
+
+    <div class="container">
+        <div style="text-align:center">
+            <h1 style="font-size: xx-large;padding-top: 3%; font-family:cursive;">Contact Us</h1>
+            <p style="font-family:cursive;">{{msg}}</p>
+        </div>
+        <div class="row">
+
+            <div class="column">
+                <form action="CS" method = "POST">
+                    {%csrf_token%}
+                    <label for="fname">First Name</label>
+                    <input type="text" id="fname" name="fname" placeholder="Your name..">
+                    <label for="lname">Last Name</label>
+                    <input type="text" id="lname" name="lname" placeholder="Your last name..">
+                    <label for="subject">Query</label>
+                    <textarea id="subject" name="subject" placeholder="Write something.." style="height:170px"></textarea>
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+            <div class="column">
+                <img src="{% static 'Images/conus.png' %}" alt="Contact Us" style="width:80%;height:50%;padding-top: 6%;">
+            </div>
+        </div>
+    </div>
+
+    <footer class="ff">
+        <ul style="float: left;">
+            <li><a style="text-transform: uppercase;font-weight: 100;"> 11 , Safal square , VIP road , Surat , Gujarat-395007 &nbsp | &nbsp Contact Info &nbsp : &nbsp +91 9898989898 &nbsp | &nbsp +91 77077878787 &nbsp | &nbsp </li></a>
+                <li>
+                    <a href="http://www.facebook.com/"><i class="fa fa-facebook"></i></li>
+                </a>
+                    <li>
+                        <a href="http://www.twitter.com/"><i class="fa fa-twitter"></i></li>
+                    </a>
+                        <li>
+                            <a href="http://www.instagram.com/"><i class="fa fa-instagram"></i></li>
+						</a>
+                            <li>
+                                <a href="http://www.linkedin.com/"><i class="fa fa-linkedin"></i></li>
+                        </a>
+        </ul>
+    </footer>
+
+
+</body>
+
+</html>
+{%endblock%}

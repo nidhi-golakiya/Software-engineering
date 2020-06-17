@@ -1,0 +1,514 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 0px;
+    margin: 0px;
+    background-color: black;
+}
+
+header img {
+    border-radius: 20%;
+    margin-top: 45%;
+    margin-bottom: -30%;
+}
+
+header {
+    position: fixed;
+    background-color: #000000;
+    color: white;
+    width: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    height: 40px;
+    text-align: left;
+    font-size: 18px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    z-index: 10;
+}
+
+footer {
+    position: fixed;
+    background-color: #000000;
+    color: black;
+    width: 100%;
+    height: 3%;
+    bottom: 0;
+    left: 0;
+    min-width: 0%;
+    font-size: 15px;
+    padding-left: 30%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    z-index: 4;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+li {
+    display: inline-block;
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-top: -20px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+
+.hh a:hover {
+    color: rgb(124, 124, 124);
+}
+
+header img:hover {
+    background-color: #1f2020;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+.textcontent {
+    background: rgb(77, 69, 69);
+    color: white;
+    text-align: justify;
+    vertical-align: middle;
+    display: inline-block;
+    line-height: 1.5;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 110%;
+    padding: 50px 50px 50px 50px;
+    border-radius: 50px;
+    margin-right: 20%;
+    margin-left: 20%;
+}
+
+.sidenav {
+    height: 100%;
+    width: 18%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(63, 62, 62);
+    background-image: linear-gradient(black, #7e7e80);
+    overflow-x: visible;
+    padding-top: 4%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.sidenav hr {
+    margin-right: 8px;
+    margin-left: 8px;
+    color: #828286;
+}
+
+.sidenav a {
+    padding: 10px 8px 8px 10px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 15px;
+    color: #ffffff;
+    display: block;
+    transform: scale(1);
+}
+
+.sidenav a:hover {
+    color: #000000;
+    background-color: rgba(255, 255, 255, 0.459);
+    transform: scale(1.01);
+}
+
+.sidenav .ss1 {
+    padding: 10px 8px 8px 10px;
+    font-size: 15px;
+    width: 100%;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #ffffff;
+    display: block;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-x: visible;
+    border: none;
+    text-align: left;
+    background-color: inherit;
+    transform: scale(1);
+}
+
+.sidenav .ss1:hover {
+    color: #000000;
+    background-color: rgba(255, 255, 255, 0.459);
+    transform: scale(1.01);
+}
+
+.sidenav .ss {
+    padding: 10px 8px 8px 10px;
+    font-size: 15px;
+    width: 100%;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #ffffff;
+    display: block;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-x: visible;
+    border: none;
+    text-align: left;
+    transform: scale(1);
+    background-color: inherit;
+}
+
+.sidenav .ss:hover {
+    color: #000000;
+    background-color: rgba(255, 255, 255, 0.459);
+    transform: scale(1.01);
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+    .sidenav a {
+        font-size: 18px;
+    }
+}
+
+.custom-select {
+    position: relative;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+    height: 5px;
+    width: 40%;
+    margin-right: 30%;
+    float: right;
+    background-image: inherit;
+    margin-top: -6%;
+    padding-bottom: 1%;
+    margin-bottom: 80px;
+}
+
+.custom-select select {
+    display: none;
+    /*hide original SELECT element:*/
+}
+
+
+/*style the arrow inside the select element:*/
+
+.select-selected:after {
+    position: absolute;
+    content: "";
+    font-size: 15px;
+    background-color: gray;
+}
+
+select:focus {
+    outline: none;
+}
+
+
+/*point the arrow upwards when the select box is open (active):*/
+
+.select-selected.select-arrow-active:after {
+    border-color: transparent transparent black transparent;
+    top: 7px;
+}
+
+
+/*style the items (options), including the selected item:*/
+
+.select-items div {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 15px;
+    color: rgb(134, 133, 133);
+    padding-bottom: 10px;
+    padding-top: 10px;
+    cursor: pointer;
+    user-select: none;
+    background-color: rgb(36, 34, 34);
+    border-bottom: 1px solid rgb(255, 255, 255);
+    font-size: 20px;
+    padding-left: 10px;
+}
+
+.select-selected {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 15px;
+    color: grey;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    cursor: pointer;
+    user-select: none;
+    background-color: rgb(0, 0, 0);
+    font-size: 20px;
+    border-bottom: 0.5px solid rgb(255, 255, 255);
+}
+
+
+/*style items (options):*/
+
+.select-items {
+    position: absolute;
+    background-color: rgb(109, 109, 109);
+    font-size: 20px;
+    left: 0;
+    right: 0;
+    z-index: 99;
+}
+
+
+/*hide the items when the select box is closed:*/
+
+.select-hide {
+    display: none;
+}
+
+.select-items div:hover,
+.same-as-selected {
+    background-color: rgba(54, 54, 54, 0.808);
+}
+
+.select-arrow {
+    color: rgb(255, 255, 255);
+    right: 0px;
+    top: 10px;
+    width: 30px;
+    position: absolute;
+    display: block;
+    z-index: 10;
+    margin: 0 0 0 0;
+    pointer-events: none;
+    background-color: cornsilk;
+}
+
+.login-container {
+    background-color: black;
+    margin-top: 10%;
+    width: 60%;
+    margin-left: 30%;
+    margin-right: 20%;
+    position: absolute;
+    border: #fff;
+    padding-bottom: 2%;
+    margin-bottom: 5%;
+    border: 1px solid rgba(255, 255, 255, 0.466);
+}
+
+.login-form-1 h3 {
+    text-align: center;
+    margin-top: 0px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(255, 255, 255);
+    margin-bottom: 0px;
+    font-size: 25px;
+    margin-bottom: 2%;
+    font-weight: 400;
+}
+
+.login-form-1 h4 {
+    margin-top: 0px;
+    color: rgb(255, 255, 255);
+    font-size: 25px;
+    margin-bottom: 0px;
+    font-weight: 100;
+    text-align: center;
+}
+
+.login-container form {
+    margin-left: 5%;
+    margin-top: 5%;
+    margin-right: 5%;
+}
+
+.login-form-1 .btnSubmit {
+    color: #fff;
+    background-color: rgb(124, 124, 124);
+}
+
+
+/* Style all input fields */
+
+input[type=text],
+input[type=password],
+input[type=date],
+input[type=email],
+input[type=url] {
+    display: block;
+    width: 70%;
+    background-color: black;
+    border: none;
+    border-bottom: 1px solid rgb(255, 255, 255);
+    box-sizing: border-box;
+    color: #aaaaaa;
+    font-size: 20px;
+    margin-top: -4%;
+    padding-bottom: 1%;
+    float: right;
+    margin-bottom: 40px;
+}
+
+label[type=label] {
+    display: block;
+    color: white;
+    font-size: 20px;
+    margin-right: 5%;
+    margin-top: 0%;
+    float: left;
+}
+
+
+/* Style the submit button */
+
+input[type=submit] {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: black;
+    font-size: 20px;
+    width: 45%;
+    height: 40%;
+    margin-left: 30%;
+}
+
+.mybtn {
+    margin-left: 30%;
+    width: 45%;
+    height: 45px;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    background-color: grey;
+    border-radius: 20px;
+    align-self: center;
+}
+
+.profile {
+    float: right;
+}
+
+.reset {
+    display: block;
+    cursor: pointer;
+    border: 1px solid black;
+    box-sizing: border-box;
+    background-color: rgb(51, 253, 1);
+    font-size: 20px;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: black;
+    padding: 5px 25px;
+    margin-top: 6%;
+    float: left;
+    margin-left: 10%;
+}
+
+.update {
+    display: block;
+    cursor: pointer;
+    border: 1px solid black;
+    box-sizing: border-box;
+    background-color: rgb(51, 253, 1);
+    font-size: 20px;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: black;
+    padding: 5px 25px;
+    margin-top: 5%;
+    margin-left: 10%;
+    float: right;
+    margin-right: 10%;
+}
+
+.delete {
+    display: block;
+    cursor: pointer;
+    border: 1px solid black;
+    box-sizing: border-box;
+    background-color: rgb(236, 22, 22);
+    font-size: 20px;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: black;
+    padding: 5px 25px;
+    margin-top: 5%;
+    float: left;
+    margin-left: 18%;
+}
+
+.submit {
+    display: block;
+    cursor: pointer;
+    border: 1px solid black;
+    box-sizing: border-box;
+    background-color: rgb(51, 253, 1);
+    font-size: 20px;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: black;
+    padding: 5px 25px;
+    margin-top: 8%;
+    float: left;
+    margin-left: 45%;
+    margin-bottom: 2%;
+}
+
+#myDIV {
+    display: none;
+    padding: 15px 25px;
+    margin-top: 1%;
+    text-align: center;
+    background-color: rgb(78, 78, 78);
+    background-image: linear-gradient(black, #0e263d);
+    float: right;
+    margin-right: 0px;
+    z-index: 100;
+}
+
+#myDIV img {
+    border-radius: 150px;
+    height: 144px;
+    width: 144px;
+    margin-top: 30px;
+    padding-top: 0px;
+    margin-bottom: 10px;
+    position: relative;
+    background-color: whitesmoke;
+    z-index: 100;
+}
+
+#mydiv input,
+label {
+    border-radius: 5px;
+    margin-top: 0px;
+    margin-top: 140px;
+    margin-left: 0px;
+    margin-right: 0px;
+    z-index: 100;
+    cursor: pointer;
+    width: 900px;
+    height: fit-content;
+}
+
+.go {
+    display: block;
+    cursor: pointer;
+    border: 1px solid black;
+    box-sizing: border-box;
+    background-color: rgb(65, 156, 152);
+    font-size: 20px;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: black;
+    float: left;
+    margin-left: 10%;
+}
+
+.remove {
+    display: block;
+    cursor: pointer;
+    border: 1px solid black;
+    box-sizing: border-box;
+    background-color: rgb(65, 156, 152);
+    font-size: 20px;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: black;
+    margin-left: 7%;
+    float: right;
+}

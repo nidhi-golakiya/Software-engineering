@@ -1,0 +1,71 @@
+{%block content%} {% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Remove Bekari | Usename</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'style/log.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <header class="hh">
+        <nav>
+            <ul>
+                <li>
+                    <a href="{% url 'home' %}"><img src="{% static 'Images/symbol.PNG' %}" alt="Opportunities is waiting for you..!!" height="40px" width="40px"></a>
+                </li>
+                <li><a href="{% url 'home' %}">HOME</a></li>
+                <li><a href="{% url 'AboutUs' %}">ABOUT US</li></a>
+                    <li><a href="{% url 'ContactUs' %}">CONTACT US</li></a>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container login-container">
+        <div class="row">
+            <div class="col-md-6 login-form-1">
+                <form action="forgotpwd" method="POST">
+                    {% csrf_token %}
+                    <h3 style="font-family: cursive;">Forgot Password ?</h3>
+                    <br>
+                    <input type="text" name="u_name" placeholder="User Name*" id="u_name" size="30" required>
+
+                    <br>
+                    <br>
+                    <div class="form-group">
+                        <input type="submit" class="btnSubmit" value="Go" />
+                    </div>
+                </form>
+                <div class="invalid-1">
+                    {%for message in messages%}
+                    <p>{{message}}</p>
+                    {%endfor%}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="ff">
+        <ul style="float: left;">
+            <li><a style="text-transform: uppercase;font-weight: 100;"> 11 , Safal square , VIP road , Surat , Gujarat-395007 &nbsp | &nbsp Contact Info &nbsp : &nbsp +91 9898989898 &nbsp | &nbsp +91 77077878787 &nbsp | &nbsp </li></a>
+                <li>
+                    <a href="http://www.facebook.com/"><i class="fa fa-facebook"></i></li>
+            </a>
+                    <li>
+                        <a href="http://www.twitter.com/"><i class="fa fa-twitter"></i></li>
+                </a>
+                        <li>
+                            <a href="http://www.instagram.com/"><i class="fa fa-instagram"></i></li>
+                    </a>
+                            <li>
+                                <a href="http://www.linkedin.com/"><i class="fa fa-linkedin"></i></li>
+                    </a>
+        </ul>
+    </footer>
+
+</body>
+
+</html>
+{%endblock%}

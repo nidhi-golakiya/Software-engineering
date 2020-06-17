@@ -1,0 +1,312 @@
+{%block content%} {% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Remove Bekari | View Applications</title>
+    <link rel="stylesheet" href="{% static 'style/hjp_style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .accept {
+            background-color: #4CAF50;
+            border: black;
+            height: 30px;
+            width: 20%;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            font-size: 14px;
+            cursor: pointer;
+            margin-top: 4%;
+            margin-left: 5%;
+            border-radius: 10px;
+        }
+        
+        .reject {
+            background-color: red;
+            border: black;
+            height: 30px;
+            width: 20%;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            font-size: 14px;
+            cursor: pointer;
+            margin-left: 30%;
+            border-radius: 10px;
+        }
+        
+        .view {
+            background-color: black;
+            border: black;
+            height: 30px;
+            width: 20%;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            font-size: 14px;
+            cursor: pointer;
+            margin-left: 55%;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body background="{% static 'Images/logo.PNG' %}'">
+    <header class="hh">
+        <nav>
+            <ul>
+                <li>
+                    <a href="{% url 'home' %}"><img src="{% static 'Images/symbol.PNG' %}" alt="Opportunities is waiting for you..!!" height="40px" width="40px"></a>
+                </li>
+                <li><a href="{% url 'AboutUs' %}">ABOUT US</li></a>
+                    <li><a href="{% url 'ContactUs' %}">CONTACT US</li></a>
+                        <li><a href="{% url 'home' %}">LOG OUT</li></a>
+                            <div class="profile">
+                                <li>
+                                    <a onclick="myFunction()"><img src={{path}} alt="Profile photo" height="40px" width="40px">
+                                    </a>
+                                </li>
+                            </div>
+            </ul>
+            <div id="myDIV">
+                <img src={{path}} alt="Profile photo">
+                <br>
+                <a>{{u_name}}</a>
+                <br><br>
+                <form action="EditPP" method="POST" enctype="multipart/form-data">
+                    {%csrf_token%}
+                    <label for="file-upload" class="custom-file-upload">
+                    <i class="fa fa-edit"></i> Edit Profile Photo
+                    </label>
+                    <input type="hidden" value="{{company_id}}" name="company_id">
+                    <input type="hidden" value="{{path}}" name="path">
+                    <input type="hidden" value="{{u_name}}" name="u_name">
+                    <input id="file-upload" name="company_logo" type="file" accept="image/*" style="display:none;"><br><br>
+                    <input type="hidden" value="go" name="pro">
+                    <button class="go" type="submit" id="myBtn">Go</button>
+                   
+                </form>
+                <form action="EditPP" method="POST" enctype="multipart/form-data">
+                    {%csrf_token%}
+                   
+                    <input type="hidden" value="{{company_id}}" name="company_id">
+                    <input type="hidden" value="{{path}}" name="path">
+                    <input type="hidden" value="{{u_name}}" name="u_name">
+                    <input id="file-upload" name="company_logo" type="file" accept="image/*" style="display:none;"><br><br>
+                    <input type="hidden" value="remove" name="pro">
+                    <button class="remove" type="submit" id="myBtn">Remove</button>
+                </form>
+            </div>
+
+        </nav>
+    </header>
+
+    <div class="sidenav">
+        <form action="HJP" method="POST">
+            {%csrf_token%}
+            <input type="hidden" value="{{company_id}}" name="company_id">
+            <input type="hidden" value="{{path}}" name="path">
+            <input type="hidden" value={{u_name}} name="u_name">
+            <input type="hidden" name="flag" value="{{flag}}">
+            <button class="ss" type="submit">Home</button>
+        </form>
+        
+        <hr>
+        <form action="updateJP" method="POST">
+            {%csrf_token%}
+            <input type="hidden" value="{{company_id}}" name="company_id">
+            <input type="hidden" value="{{path}}" name="path">
+            <input type="hidden" value="{{u_name}}" name="u_name">
+            <input type="hidden" name="flag" value="{{flag}}">
+            <button class="ss1" type="submit">Update Profile</button>
+        </form>
+        <hr>
+    </div>
+    <div class="job-det" style="padding-top: 5%;">
+        <a style="color: rgb(255, 255, 255);font-family: cursive;">  Applicatations </a>
+        <hr>
+    </div>
+    {%for pf,r_,st in profile%}
+    <!--for loop start-->
+    <div class="job-det">
+        <div class="job">
+            <br>
+            <div class="left_c">
+                <a style="font-weight: bold;">{{pf.f_name}}</a><a style="font-weight: bold;">{{pf.l_name}}</a>
+                <!--Category name--><br>
+                <a>Gender : {{pf.gender}}</a><br>
+                <a>Location:</a><a>{{pf.state}}</a>
+                <!--Location--><br>
+                <a>Email_Id:</a><a>{{pf.email_id}}</a>
+                <!--Location--><br>
+            </div>
+            <div class="right_c">
+                <a>
+                    <img src={{pf.js_profile_pic}} alt="Profile photo" height="80px" width="80px">
+                </a>
+            </div>
+            <br><br><br>
+            <br>
+            <br>
+            <div>
+                {% if flag != "Short Listed" and flag != "Declined" %}
+                <form action="Accept" method="POST">
+                    {%csrf_token%}
+
+                    
+                    <input type="hidden" name="status" value="Short Listed">
+                    <input type="hidden" value="{{company_id}}" name="company_id">
+                    <input type="hidden" name="path" value="{{path}}">
+                    <input type="hidden" name="job_id" value="{{job_id}}">
+                    <input type="hidden" name="u_name" value="{{pf.u_name}}">
+                    <input type="hidden" name="company_name" value="{{company_name}}">
+                    <input type="hidden" name="resume" value="{{r_}}">
+                    <input type="hidden" name="flag" value={{st}}>
+                    <input type="hidden" value={{u_name}} name="u_nameJP">
+                    <button type="submit" value="Accept" class="accept">Accept   &#10004</button>
+                </form>
+
+
+                <form action="Accept" method="POST" style="margin-top:-5% ;">
+                    {%csrf_token%}
+
+                    
+                    <input type="hidden" name="status" value="Declined">
+                    <input type="hidden" value="{{company_id}}" name="company_id">
+                    <input type="hidden" name="path" value="{{path}}">
+                    <input type="hidden" name="job_id" value="{{job_id}}">
+                    <input type="hidden" name="u_name" value="{{pf.u_name}}">
+                    <input type="hidden" name="company_name" value="{{company_name}}">
+                    <input type="hidden" name="resume" value="{{r_}}">
+                    <input type="hidden" name="flag" value="{{st}}">
+                    <input type="hidden" value={{u_name}} name="u_nameJP">
+                    <button type="submit" value="Decline" class="reject">Decline &#10008</button>
+                </form>
+                {%endif%}
+                <!--View resume and download it-->
+                <!--{% static 'Resume/viral_gol.pdf' %}-->
+                <form style="margin-top:-4.5% ;">
+                    <button type="button" onClick="openTab(this)" name="{{r_}}" class="view">View Resume</button>
+                </form>
+            </div>
+
+            <br>
+        </div>
+    </div>
+    {%endfor%}
+    <!--for loop end-->
+
+
+    <footer class="ff">
+        <ul style="float: left;">
+            <li><a style="text-transform: uppercase;font-weight: 100;"> 11 , Safal square , VIP road , Surat , Gujarat-395007 &nbsp | &nbsp Contact Info &nbsp : &nbsp +91 9898989898 &nbsp | &nbsp +91 77077878787 &nbsp | &nbsp </li></a>
+                <li>
+                    <a href="http://www.facebook.com/"><i class="fa fa-facebook"></i></li>
+            </a>
+                    <li>
+                        <a href="http://www.twitter.com/"><i class="fa fa-twitter"></i></li>
+                </a>
+                        <li>
+                            <a href="http://www.instagram.com/"><i class="fa fa-instagram"></i></li>
+                    </a>
+                            <li>
+                                <a href="http://www.linkedin.com/"><i class="fa fa-linkedin"></i></li>
+                    </a>
+        </ul>
+    </footer>
+    <script type="text/javascript">
+        function openTab(th) {
+            window.open(th.name, '_blank');
+        }
+    </script>
+
+    <script>
+        function myFunction() {
+            var x = document.getElementById("myDIV");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+    </script>
+    <script>
+        var x, i, j, selElmnt, a, b, c;
+        /*look for any elements with the class "custom-select ":*/
+        x = document.getElementsByClassName("custom-select ");
+        for (i = 0; i < x.length; i++) {
+            selElmnt = x[i].getElementsByTagName("select ")[0];
+            /*for each element, create a new DIV that will act as the selected item:*/
+            a = document.createElement("DIV ");
+            a.setAttribute("class ", "select-selected ");
+            a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+            x[i].appendChild(a);
+            /*for each element, create a new DIV that will contain the option list:*/
+            b = document.createElement("DIV ");
+            b.setAttribute("class ", "select-items select-hide ");
+            for (j = 1; j < selElmnt.length; j++) {
+                /*for each option in the original select element,
+                create a new DIV that will act as an option item:*/
+                c = document.createElement("DIV ");
+                c.innerHTML = selElmnt.options[j].innerHTML;
+                c.addEventListener("click ", function(e) {
+                    /*when an item is clicked, update the original select box,
+                    and the selected item:*/
+                    var y, i, k, s, h;
+                    s = this.parentNode.parentNode.getElementsByTagName("select ")[0];
+                    h = this.parentNode.previousSibling;
+                    for (i = 0; i < s.length; i++) {
+                        if (s.options[i].innerHTML == this.innerHTML) {
+                            s.selectedIndex = i;
+                            h.innerHTML = this.innerHTML;
+                            y = this.parentNode.getElementsByClassName("same-as-selected ");
+                            for (k = 0; k < y.length; k++) {
+                                y[k].removeAttribute("class ");
+                            }
+                            this.setAttribute("class ", "same-as-selected ");
+                            break;
+                        }
+                    }
+                    h.click();
+                });
+                b.appendChild(c);
+            }
+            x[i].appendChild(b);
+            a.addEventListener("click ", function(e) {
+                /*when the select box is clicked, close any other select boxes,
+                and open/close the current select box:*/
+                e.stopPropagation();
+                closeAllSelect(this);
+                this.nextSibling.classList.toggle("select-hide ");
+                this.classList.toggle("select-arrow-active ");
+            });
+        }
+
+        function closeAllSelect(elmnt) {
+            /*a function that will close all select boxes in the document,
+            except the current select box:*/
+            var x, y, i, arrNo = [];
+            x = document.getElementsByClassName("select-items ");
+            y = document.getElementsByClassName("select-selected ");
+            for (i = 0; i < y.length; i++) {
+                if (elmnt == y[i]) {
+                    arrNo.push(i)
+                } else {
+                    y[i].classList.remove("select-arrow-active ");
+                }
+            }
+            for (i = 0; i < x.length; i++) {
+                if (arrNo.indexOf(i)) {
+                    x[i].classList.add("select-hide ");
+                }
+            }
+        }
+        /*if the user clicks anywhere outside the select box,
+        then close all select boxes:*/
+        document.addEventListener("click ", closeAllSelect);
+    </script>
+</body>
+
+</html>
+{%endblock%}

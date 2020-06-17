@@ -1,0 +1,502 @@
+{%block content%} {% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Job seeker | Update</title>
+    <link rel="stylesheet" href="{% static 'style/jsstyle.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body background="{% static 'Images/logo.PNG' %}'">
+    <header class="hh">
+        <nav>
+            <ul>
+                <li>
+                    <a href="{% url 'home' %}"><img src="{% static 'Images/symbol.PNG' %}" alt="Opportunities is waiting for you..!!" height="40px" width="40px"></a>
+                </li>
+
+
+                <li><a href="{% url 'AboutUs' %}">ABOUT US</li></a>
+                    <li><a href="{% url 'ContactUs' %}">CONTACT US</li></a>
+                        <li><a href="{% url 'home' %}">LOG OUT</li></a>
+                            <div class="profile">
+                                <li>
+                                    <a onclick="myFunction()"> <img src="{{user_det}}" alt="Profile photo" height="40px" width="40px"></a>
+
+                                </li>
+                            </div>
+            </ul>
+            <div id="myDIV">
+                <img src={{user_det}} alt="Profile photo">
+                <br>
+                <a>{{u_name}}</a>
+                <br><br>
+                <form action="EditJS" method="POST" enctype="multipart/form-data">
+                    {%csrf_token%}
+                    <label for="file-upload1" class="custom-file-upload1">
+                    <i class="fa fa-edit"></i> Edit Profile Photo
+                    </label>
+                    <br><br>
+
+                    <input type="hidden" value="{{user_det}}" name="user_det">
+                    <input type="hidden" value="{{u_name}}" name="u_name">
+                    <input id="file-upload1" name="js_profile_pic" type="file" accept="image/*" style="display:none;"><br><br>
+                    <button class="go" type="submit" id="myBtn">Go</button>
+                    <button class="remove" type="submit" id="myBtn">Remove</button>
+
+
+                </form>
+            </div>
+
+        </nav>
+    </header>
+
+    <div class="container login-container">
+        <div class="row">
+            <div class="col-md-6 login-form-1">
+                <form action="UPJS" method="POST" enctype="multipart/form-data">
+                    <h4 style="height: 60px;background-image: linear-gradient(rgb(6, 38, 41),black );">Update Details</h4>
+                    {% csrf_token %}
+
+
+                    <input type=text name=f_name placeholder="Firstname*" value="{{JS.f_name}}" id="textname" size="15" required style="float:left" />
+                    <input type="text" onclick="getOption2()" name=m_name value="{{JS.m_name}}" placeholder="Middlename*" id="textname" size="15" required style="float: right;">
+                    <br>
+
+                    <input type="text" name=l_name placeholder="Lastname*" value="{{JS.l_name}}" id="textname" size="15" required style="float: left;">
+                    <input placeholder="Date of Birth" name="dob" class="textbox-n" value="{{x}}" type="date" onfocus="(this.type = 'date')" id="dob" style="float: right;">
+                    <br>
+
+                    <input type="text" name="mobile_no" value="{{JS.mobile_no}}" placeholder="Mobile No*" maxlength="14" id="mobileno" size="30" required style="float: left;">
+                    <input type="text" name="city" placeholder="City" value="{{JS.city}}" id="city" size="30" style="float: right;">
+                    <br>
+
+                    <p id="phoneno" class="invalid" style="float:left">Format:+91-1234567890</p>
+                    <br>
+
+                    <input type="text" name="pincode" placeholder="Pincode*" value="{{JS.pincode}}" maxlength="6" pattern="[0-9]{6}" id="pincode" size="30" title="Must contain at 6 letters" style="float: left;" required>
+                    <input type="text" name="state" placeholder="State*" value="{{JS.state}}" id="state" size="30" required style="float: right;">
+                    <br>
+
+                    <p id="pin" class="invalid" style="float:left">Format:380001</p>
+                    <br>
+
+                    <input type="email" name="email_id" style="float:left" value="{{JS.email_id}}" placeholder="Email Id*" title="Please fill as given formate" pattern="[a-z0-9._%+-]+\@[a-z0-9.-]+\.[a-z]{2,}" id="email" size="30" required style="float: left;">
+                    <input type="text" name="add" style="float:right" value="{{JS.add}}" placeholder="Address*" required></input>
+                    <br>
+                    <p id="emailid" class="invalid" style="float:left">Format:xxx.@gmail.com</p>
+                    <br>
+
+                    <input type="text" name="u_name" placeholder="User Name*" id="uname" value="{{JS.u_name}}" size="30" required style="float: left; margin-right:100%">
+                    <br>
+
+                    <div class="gender"><a style="color: white">Gender: </a> {%if JS.gender == "Male" %}
+                        <input type="radio" name="gender" value="Male" checked><a>Male</a>
+                        <input type="radio" name="gender" value="Female"><a>Female</a>
+                        <input type="radio" name="gender" value="other"><a>Other</a> {%elif JS.gender == "Female" %}
+                        <input type="radio" name="gender" value="Male"><a>Male</a>
+                        <input type="radio" name="gender" value="Female" checked><a>Female</a>
+                        <input type="radio" name="gender" value="other"><a>Other</a> {%else%}
+                        <input type="radio" name="gender" value="Male"><a>Male</a>
+                        <input type="radio" name="gender" value="Female"><a>Female</a>
+                        <input type="radio" name="gender" value="other" checked><a>Other</a> {%endif%}
+                    </div>
+                    <br>
+
+                    <div>
+                        <input type="password" class="form-control" placeholder="Password*" value="{{JS.pwd}}" id="psw" name="pwd" pattern="(?=.*\d)(?=.*[a-z]).{8,}" title="Must contain at least one number and lowercase letter, and at least 8 or more characters" required style="float: left;">
+                        <span toggle="#psw" class="fa fa-fw fa-eye field-icon toggle-password" style="float: left; margin-top: 25px;"></span>
+                    </div>
+                    <div>
+                        <span toggle="#paddress" class="fa fa-fw fa-eye field-icon toggle-password" style="float: right; margin-top: 25px;"></span>
+                        <input type="password" name="pwd" placeholder="Retype-Password*" value="{{JS.pwd}}" id="paddress" size="30" required style="float: right;">
+                    </div>
+                    <div id="message" style="float: left;">
+                        <h7>Password must contain the following:</h7>
+                        <p id="letter" class="invalid">A lowercase letter</p>
+                        <p id="number" class="invalid">A number must be present</p>
+                        <p id="length" class="invalid">Minimum 8 characters</p>
+                    </div>
+                    <br>
+
+                    <div class="custom-select" onclick="getOption()">
+                        <select id="select1" name="uid_type" value="{{JS.uid_type}}" aria-readonly="true">
+							<option >Select uid type:</option>
+							<option >Aadhar Card</option>
+							<option >Pan Card</option>
+						</select>
+                    </div>
+                    <script type="text/javascript">
+                        var security_que = '{{JS.uid_type}}';
+                        document.getElementById('select1').value = security_que;
+                    </script>
+                    <input type="text" name="uid_number" placeholder="UID No*" id="uidno" value="{{JS.uid_number}}" size="30" readonly style="float: left;">
+                    <br>
+                    <p id="uid" class="invalid" style="float: left;">Format:<span class="msg"></span> </p>
+                    <br>
+
+                    <div class="custom-select" style="width:435px;">
+                        <select name="js_security_question" id="js_security_question">
+						  <option value="0">Select question</option>
+						  <option value="What was the house number you lived in as a child?"> What was the house number you lived in as a child?</option>
+						  <option value="What primary school did you attend?">What primary school did you attend?</option>
+						  <option value="In what town or city did you meet your spouse/partner?">In what town or city did you meet your spouse/partner?</option>
+						  <option value="What is the middle name of your oldest child?">What is the middle name of your oldest child?</option>
+						  <option value="In what town or city did your mother and father meet?">In what town or city did your mother and father meet?</option>
+						  <option value="What is your pet name?">What is your pet name?</option>
+						</select>
+                    </div>
+                    <script type="text/javascript">
+                        var security_que = '{{JS.js_security_question}}';
+                        document.getElementById('js_security_question').value = security_que;
+                    </script>
+
+                    <input type="text" class="form-control" placeholder="Your answer *" value="{{JS.js_ans_security_question}}" id="ans" name="js_ans_security_question" required style="float: left;margin-right: 100%;">
+                    <br>
+                    <input type="hidden" value="{{user_det}}" name="user_det">
+                    <input type="hidden" value="update" name="reset">
+                    <!--label for="file-upload" class="custom-file-upload">
+						<i class="fa fa-cloud-upload"></i> Upload Profile
+					</label>
+                    <br>
+                    
+                    <input id="file-upload" name="js_profile_pic" type="file" value = "{{JS.js_profile_pic}}" accept="image/*" style="display:none;"-->
+
+                    <button class="update" type="submit" id="myBtn">Update</button>
+                    <br>
+
+                </form>
+                <form action="UPJS" method="POST">
+                    {%csrf_token%}
+                    <input type="hidden" value="{{JS.u_name}}" name="u_name">
+                    <input type="hidden" value="{{user_det}}" name="user_det">
+                    <input type="hidden" value="reset" name="reset">
+                    <button class="reset" type="submit" id="myBtn">Reset</button>
+                    <!--onclick="reset()"-->
+                </form>
+                <form action="UPJS" method="POST">
+                    {%csrf_token%}
+                    <input type="hidden" value="{{JS.u_name}}" name="u_name">
+                    <input type="hidden" value="{{user_det}}" name="user_det">
+                    <input type="hidden" value="delete" name="reset">
+                    
+                    <button class="delete" type="submit" id="myBtn">Delete Account</button>
+                </form>
+                
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function myFunction() {
+            var x = document.getElementById("myDIV");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+    </script>
+
+    <script>
+        // Script For Display the password  
+        $(".toggle-password").click(function() {
+
+            $(this).toggleClass("fa-eye fa-eye-slash");
+            var input = $($(this).attr("toggle"));
+            if (input.attr("type") == "password") {
+                input.attr("type", "text");
+            } else {
+                input.attr("type", "password");
+            }
+        });
+        //-------------------------------------------------------
+
+        // Script For reset  the page   
+        function reset() {
+            document.getElementById("container login-container").reset();
+        }
+        //-------------------------------------------------------
+
+        // Script For Upload Image From Profile pic  
+        $('#file-upload').change(function() {
+            var i = $(this).prev('label').clone();
+            var file = $('#file-upload')[0].files[0].name;
+            $(this).prev('label').text(file);
+        });
+        //-------------------------------------------------------
+
+        // Script For Password and Re Type password must be same 
+        var password = document.getElementById("psw"),
+            confirm_password = document.getElementById("paddress");
+
+        function validatePassword() {
+            if (password.value != confirm_password.value) {
+                confirm_password.setCustomValidity("Passwords Don't Match");
+            } else {
+                confirm_password.setCustomValidity('');
+            }
+        }
+        password.onchange = validatePassword;
+        confirm_password.onkeyup = validatePassword;
+        //-------------------------------------------------------
+
+        // Script For check if UID Type is Aadharcard or Pan Card for printing format
+        function getOption() {
+            selectElement = document.querySelector('#select1');
+            output = selectElement.value;
+
+            if (output == "Aadhar Card") {
+                msg = "1234-4567-6789"
+
+                document.querySelector('.msg').textContent = msg;
+
+            } else if (output == "Pan Card") {
+                msg = "AAAPL1234C"
+
+                document.querySelector('.msg').textContent = msg;
+
+            }
+        }
+        //-------------------------------------------------------
+
+        // Script For Format of Pincode ,Email Id , Mobile Number , UID No
+        var myInput1 = document.getElementById("pincode");
+        var myInput2 = document.getElementById("email");
+        var myInput3 = document.getElementById("mobileno");
+        var myInput4 = document.getElementById("uidno");
+
+        var pincode = document.getElementById("pin");
+        var email = document.getElementById("emailid");
+        var uidno = document.getElementById("uid");
+        var phoneno = document.getElementById("phoneno");
+
+        myInput1.onfocus = function() {
+            document.getElementById("pin").style.display = "block";
+        }
+        myInput1.onblur = function() {
+            document.getElementById("pin").style.display = "none";
+        }
+        myInput2.onfocus = function() {
+            document.getElementById("emailid").style.display = "block";
+        }
+        myInput2.onblur = function() {
+            document.getElementById("emailid").style.display = "none";
+        }
+        myInput3.onfocus = function() {
+            document.getElementById("phoneno").style.display = "block";
+        }
+        myInput3.onblur = function() {
+            document.getElementById("phoneno").style.display = "none";
+        }
+        myInput4.onfocus = function() {
+            document.getElementById("uid").style.display = "block";
+        }
+        myInput4.onblur = function() {
+            document.getElementById("uid").style.display = "none";
+        }
+
+        myInput1.onkeyup = function() {
+            var pincodeletters = /\d{6}$/g;
+            if (myInput1.value.match(pincodeletters)) {
+                pincode.classList.remove("invalid");
+                pincode.classList.add("valid");
+            } else {
+                pincode.classList.remove("valid");
+                pincode.classList.add("invalid");
+            }
+        }
+        myInput2.onkeyup = function() {
+            var emailids = /[a-z0-9._%+-]+\@[a-z0-9.-]+\.[a-z]{2,}$/g;
+            /*var emailids = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,}+"@"+(?=.*[a-z])(?=.*[A-Z]).{5,}+"."+(?=.*[a-z])(?=.*[A-Z]).{2,}$/g;*/
+            if (myInput2.value.match(emailids)) {
+                email.classList.remove("invalid");
+                email.classList.add("valid");
+            } else {
+                email.classList.remove("valid");
+                email.classList.add("invalid");
+            }
+        }
+        myInput3.onkeyup = function() {
+            var phonenoletters = /\+91-\d{10}$/g;
+            if (myInput3.value.match(phonenoletters)) {
+                phoneno.classList.remove("invalid");
+                phoneno.classList.add("valid");
+            } else {
+                phoneno.classList.remove("valid");
+                phoneno.classList.add("invalid");
+            }
+        }
+
+        myInput4.onkeyup = function() {
+            if (output == "Aadhar Card") {
+
+                var uidnoletters = /[0-9]{4}-[0-9]{4}-[0-9]{4}$/g;
+                if (myInput4.value.match(uidnoletters)) {
+                    uidno.classList.remove("invalid");
+                    uidno.classList.add("valid");
+                } else {
+                    uidno.classList.remove("valid");
+                    uidno.classList.add("invalid");
+                }
+            } else if (output == "Pan Card") {
+
+                var uidnoletters2 = /([A-Z]){5}([0-9]){4}([A-Z]){1}$/g;
+                if (myInput4.value.match(uidnoletters2)) {
+                    uidno.classList.remove("invalid");
+                    uidno.classList.add("valid");
+                } else {
+                    uidno.classList.remove("valid");
+                    uidno.classList.add("invalid");
+                }
+            }
+        }
+        var myInput = document.getElementById("psw");
+        var letter = document.getElementById("letter");
+        var number = document.getElementById("number");
+        var length = document.getElementById("length");
+
+        // When the user clicks on the password field, show the message box
+        myInput.onfocus = function() {
+            document.getElementById("message").style.display = "block";
+        }
+
+        // When the user clicks outside of the password field, hide the message box
+        myInput.onblur = function() {
+            document.getElementById("message").style.display = "none";
+        }
+
+        // When the user starts to type something inside the password field
+        myInput.onkeyup = function() {
+                // Validate lowercase letters
+                var lowerCaseLetters = /[a-z]/g;
+                if (myInput.value.match(lowerCaseLetters)) {
+                    letter.classList.remove("invalid");
+                    letter.classList.add("valid");
+                } else {
+                    letter.classList.remove("valid");
+                    letter.classList.add("invalid");
+                }
+
+                // Validate numbers
+                var numbers = /[0-9]/g;
+                if (myInput.value.match(numbers)) {
+                    number.classList.remove("invalid");
+                    number.classList.add("valid");
+                } else {
+                    number.classList.remove("valid");
+                    number.classList.add("invalid");
+                }
+
+                // Validate length
+                if (myInput.value.length >= 8) {
+                    length.classList.remove("invalid");
+                    length.classList.add("valid");
+                } else {
+                    length.classList.remove("valid");
+                    length.classList.add("invalid");
+                }
+            }
+            //---------------------------------------------------------------
+
+        //Script for DropDown Button
+        var x, i, j, selElmnt, a, b, c;
+        /*look for any elements with the class "custom-select":*/
+        x = document.getElementsByClassName("custom-select");
+        for (i = 0; i < x.length; i++) {
+            selElmnt = x[i].getElementsByTagName("select")[0];
+            /*for each element, create a new DIV that will act as the selected item:*/
+            a = document.createElement("DIV");
+            a.setAttribute("class", "select-selected");
+            a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+            x[i].appendChild(a);
+            /*for each element, create a new DIV that will contain the option list:*/
+            b = document.createElement("DIV");
+            b.setAttribute("class", "select-items select-hide");
+            for (j = 1; j < selElmnt.length; j++) {
+                /*for each option in the original select element,
+                create a new DIV that will act as an option item:*/
+                c = document.createElement("DIV");
+                c.innerHTML = selElmnt.options[j].innerHTML;
+                c.addEventListener("click", function(e) {
+                    /*when an item is clicked, update the original select box,
+                    and the selected item:*/
+                    var y, i, k, s, h;
+                    s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+                    h = this.parentNode.previousSibling;
+                    for (i = 0; i < s.length; i++) {
+                        if (s.options[i].innerHTML == this.innerHTML) {
+                            s.selectedIndex = i;
+                            h.innerHTML = this.innerHTML;
+                            y = this.parentNode.getElementsByClassName("same-as-selected");
+                            for (k = 0; k < y.length; k++) {
+                                y[k].removeAttribute("class");
+                            }
+                            this.setAttribute("class", "same-as-selected");
+                            break;
+                        }
+                    }
+                    h.click();
+                });
+                b.appendChild(c);
+            }
+            x[i].appendChild(b);
+            a.addEventListener("click", function(e) {
+                /*when the select box is clicked, close any other select boxes,
+                and open/close the current select box:*/
+                e.stopPropagation();
+                closeAllSelect(this);
+                this.nextSibling.classList.toggle("select-hide");
+                this.classList.toggle("select-arrow-active");
+            });
+        }
+
+        function closeAllSelect(elmnt) {
+            /*a function that will close all select boxes in the document,
+            except the current select box:*/
+            var x, y, i, arrNo = [];
+            x = document.getElementsByClassName("select-items");
+            y = document.getElementsByClassName("select-selected");
+            for (i = 0; i < y.length; i++) {
+                if (elmnt == y[i]) {
+                    arrNo.push(i)
+                } else {
+                    y[i].classList.remove("select-arrow-active");
+                }
+            }
+            for (i = 0; i < x.length; i++) {
+                if (arrNo.indexOf(i)) {
+                    x[i].classList.add("select-hide");
+                }
+            }
+        }
+        /*if the user clicks anywhere outside the select box,
+        then close all select boxes:*/
+        document.addEventListener("click", closeAllSelect);
+        //----------------------------------------------------------
+    </script>
+
+    <footer class="ff">
+        <ul style="float: left;">
+            <li><a style="text-transform: uppercase;font-weight: 100;"> 11 , Safal square , VIP road , Surat , Gujarat-395007 &nbsp | &nbsp Contact Info &nbsp : &nbsp +91 9898989898 &nbsp | &nbsp +91 77077878787 &nbsp | &nbsp </li></a>
+                <li>
+                    <a href="http://www.facebook.com/"><i class="fa fa-facebook"></i></li>
+        </a>
+                    <li>
+                        <a href="http://www.twitter.com/"><i class="fa fa-twitter"></i></li>
+            </a>
+                        <li>
+                            <a href="http://www.instagram.com/"><i class="fa fa-instagram"></i></li>
+                </a>
+                            <li>
+                                <a href="http://www.linkedin.com/"><i class="fa fa-linkedin"></i></li>
+                </a>
+        </ul>
+    </footer>
+
+</body>
+
+</html>
+{%endblock%}

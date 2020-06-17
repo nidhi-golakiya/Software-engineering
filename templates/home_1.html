@@ -1,0 +1,82 @@
+{%block content%} {% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Remove Bekari | Home</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'style/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body background="{% static 'Images/logo.PNG' %}'">
+
+    <header class="hh">
+        <nav>
+            <ul>
+                <li>
+                    <a href="{% url 'home' %}"><img src="{% static 'Images/symbol.PNG' %}" alt="Opportunities is waiting for you..!!" height="40px" width="40px"></a>
+                </li>
+                <li><a href="{% url 'home' %}">HOME</a></li>
+                <li><a href="{% url 'login' %}">LOG IN</li></a>
+                    <li><a href="{% url 'AboutUs' %}">ABOUT US</li></a>
+                        <li><a href="{% url 'ContactUs' %}">CONTACT US</li></a>
+            </ul>
+
+
+        </nav>
+    </header>
+    <div class="container">
+        <a href="{% url 'login' %}"><button class="btn1" >LOG IN</button></a>
+        <div class="or">or</div>
+        <div class="dropdown">
+            <button onclick="myFunction()" class="dropbtn">SIGN UP AS</button>
+            <div id="myDropdown" class="dropdown-content">
+                <a href="{% url 'JobProvider' %}">Job Provider</a>
+
+                <a href="{% url 'JobSeeker' %}">Job Seeker</a>
+
+            </div>
+        </div>
+    </div>
+
+    <footer class="ff">
+        <ul class="float_right">
+            <li><a style="text-transform: uppercase;"> 11 , Safal square , VIP road , Surat , Gujarat-395007 &nbsp | &nbsp Contact Info &nbsp : &nbsp +91 9898989898 &nbsp | &nbsp +91 77077878787 &nbsp | &nbsp </li></a>
+                <li>
+                    <a href="http://www.facebook.com/"><i class="fa fa-facebook"></i></li>
+                </a>
+                    <li>
+                        <a href="http://www.twitter.com/"><i class="fa fa-twitter"></i></li>
+                    </a>
+                        <li>
+                            <a href="http://www.instagram.com/"><i class="fa fa-instagram"></i></li>
+						</a>
+                            <li>
+                                <a href="http://www.instagram.com/"><i class="fa fa-linkedin"></i></li>
+                        </a>
+        </ul>
+    </footer>
+
+    <script>
+        function myFunction() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
+
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function(event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
+{%endblock%}

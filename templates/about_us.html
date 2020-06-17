@@ -1,0 +1,135 @@
+{%block content%} {% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Remove Bekari | About us</title>
+    <link rel="stylesheet" href="{% static 'style/asstyle.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body background="{% static 'Images/logo.PNG' %}'">
+    <header class="hh">
+        <nav>
+            <ul>
+                <li>
+                    <a href="{% url 'home' %}"><img src="{% static 'Images/symbol.PNG' %}" alt="Opportunities is waiting for you..!!" height="40px" width="40px"></a>
+                </li>
+                <li><a href="{% url 'home' %}">HOME</a></li>
+                <li><a href="{% url 'AboutUs' %}">ABOUT US</li></a>
+                    <li><a href="{% url 'ContactUs' %}">CONTACT US</li></a>
+            </ul>
+
+
+        </nav>
+    </header>
+
+
+    <div class="about-section">
+        <div class="as"> About Us
+        </div>
+        <br>
+        <hr>
+        <h1>Our Mission</h1>
+        <p>Everyone knows this very well, that when there is an agent or you can say a ‘middle man’ in layman terms, your tasks or the objectives you’re seeking becomes very much easier to achieve. And that’s precisely what our mission with this website
+            is.We are the agents between the various companies who are in search for the right candidates for their jobs, and those candidates who are seeking for their dream jobs. Our main goal is to narrow the distance between them and make their jobs/candidates
+            hunt a simple and lucid task.</p>
+        <br><br>
+        <hr><br><br>
+
+        <h1>Who do we serve?</h1>
+        <p>Are you searching for the right job to kick start your career? Or do you need efficient and talented employees for uplifting the success charts of your company? Then you have reached just the right place for both. We are here to serve all those
+            who lie on either of those sides. And we assure you that you will not regret contacting us.</p>
+        <br><br>
+        <hr><br><br>
+        <h1>What do we offer</h1>
+        <p>Here from our platform, the job seekers can search for different companies based on the the different filters they’ve applied. They can filter the companies based on the type of work of their interest. They can also go through the company profile
+            pages. The job providers can update their profiles and the job vacancies available. We also offer a medium through which job seekers can upload their resumes on the company pages with whom they would like to go ahead. And the the job providers
+            can download/view those resumes and decide on it’s status(rejected or selected). The companies can then contact the selected candidates through the mail ids or any other contact details provided, for further procedures. </p>
+        <br><br>
+        <hr><br><br>
+
+        <h1>Why Us?</h1>
+        <p>Lending us the role to become your agents will surely make your respective searches easy and manageable. We are always trying our best to offer the best services. And from time to time, we also try to keep updating our system to give you a newer
+            and better experience with us. </p>
+        <p>And always remember…… </p>
+        <p style="color: rgb(35, 39, 39);"><b> Opportunities don’t happen. You create them. </b></p>
+        <p style="text-align:right;color: rgb(35, 39, 39);">-- Chris Grosser</p>
+    </div>
+    <div class="ot">
+        <h1 style="text-align:center">Our Leaders</h1>
+    </div>
+    <div class="row">
+        <div class="column">
+            <div class="card">
+
+                <div class="container">
+                    <img src="{% static 'Images/img1.png' %}" alt="Jane" style="width:100%;height: 2%;padding-top: 6%;">
+                    <h2>Aarav Sharma</h2>
+                    <p class="title">Designer</p>
+                    <p>Mr. Aarav ia an aspiring IT engineer who completed his eductaion from IIT Kanpur. He is the head of the software development team. With an ambitious vision in mind, he is striving towards his dream goals. He proves to be an excellent
+                        designer with his intellect and presence of mind.
+                    </p>
+                    <p>amsharma_89@gmail.com</p>
+                    <p><button class="button" onclick="location.href='http://www.gmail.com/';">Contact</button></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="card">
+                <div class="container">
+                    <img src="{% static 'Images/img2.png' %}" alt="Mike" style="width:100%;height: 2%;padding-top: 6%;">
+                    <h2>Jay Mehta</h2>
+                    <p class="title">Director</p>
+                    <p>Mr. Jay has obtained the degree of MBA from NMIMS Mumbai. At such a young age, he has already achieved heaps of success and still more to come. He is always passionate about exploring new ideas same enthusiasm. It is his hardwork and
+                        talent that has driven him to this successfull stage.
+                    </p>
+                    <p>jaymehta12@gmail.com</p>
+                    <p><button class="button" onclick="location.href='http://www.gmail.com/';">Contact</button></p>
+                </div>
+            </div>
+        </div>
+
+        <div class=" column ">
+            <div class="card ">
+
+                <div class="container ">
+                    <img src="{% static 'Images/img3.png' %} " alt="John " style="width:100%;height: 2%;padding-top: 6%; ">
+                    <h2>Niharika Shroff</h2>
+                    <p class="title ">Founder</p>
+                    <p>Miss Niharika has completed her education from IIMA in the field MBA in Marketing. She stands out as a great inspiration for womanhood and is considered as a role model by many. Her creative ideas and thinking have boosted the foundation
+                        of many such small/large scale companies.</p>
+                    <p>niharika_shroff@gmail.com</p>
+                    <p><button class="button " onclick="location.href='http://www.gmail.com/'" ;>Contact</button>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="ff">
+        <ul style="float: left;">
+            <li><a style="text-transform: uppercase;font-weight: 100;"> 11 , Safal square , VIP road , Surat , Gujarat-395007 &nbsp | &nbsp Contact Info &nbsp : &nbsp +91 9898989898 &nbsp | &nbsp +91 77077878787 &nbsp | &nbsp </li></a>
+                <li>
+                    <a href="http://www.facebook.com/"><i class="fa fa-facebook"></i></li>
+                </a>
+                    <li>
+                        <a href="http://www.twitter.com/"><i class="fa fa-twitter"></i></li>
+                    </a>
+                        <li>
+                            <a href="http://www.instagram.com/"><i class="fa fa-instagram"></i></li>
+						</a>
+                            <li>
+                                <a href="http://www.linkedin.com/"><i class="fa fa-linkedin"></i></li>
+                        </a>
+        </ul>
+    </footer>
+
+
+
+</body>
+
+</html>
+{%endblock%}
